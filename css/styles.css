@@ -1,4 +1,288 @@
-/* styles.css */
-body {
-    background-color: red;
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Arimo:wght@600;700&family=Carme&display=swap");
+
+.cmp-form {
+  border: 1px solid #ccc;
+  -webkit-animation: fadein 2s;
+  -moz-animation: fadein 2s;
+  -ms-animation: fadein 2s;
+  -o-animation: fadein 2s;
+  animation: fadein 2s;
+}
+.cmp-form,
+.cmp-form button {
+  font-family: "Arimo", sans-serif;
+}
+.cmp-form .headline,
+.modal-body .headline {
+  font-family: "Carme", sans-serif;
+  line-height: 1.2;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #999;
+}
+.col-container {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.cmp-form .c1 {
+  padding: 15px;
+}
+.cmp-form img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+.cmp-form button {
+  text-transform: uppercase;
+}
+.cmp-form ul {
+  list-style: none;
+  padding: 0;
+}
+.cmp-form ul li {
+  margin-bottom: 10px;
+  position: relative;
+}
+.cmp-form .cmp-form-field {
+  background: #f1f1f1;
+  border-radius: 4px 4px 0 0;
+  padding-top: 0;
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.cmp-form input,
+.cmp-form label {
+  color: #1e1e1e;
+}
+.cmp-form .button-container {
+  margin-top: 2rem;
+}
+.cmp-form .button-container button {
+  font-size: 14px;
+  padding: 15px 38px;
+  cursor: pointer;
+}
+.cmp-form-field:after {
+  content: "";
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+  border-bottom: 2px solid transparent;
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 100%;
+}
+.cmp-form-field label {
+  color: #555;
+  font-size: 17px;
+  font-weight: 400;
+  left: 16px;
+  position: absolute;
+  top: 18px;
+}
+.cmp-form-field input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #d4d2d2;
+  color: #000;
+  font-size: 16px;
+  outline: 0;
+  padding: 26px 15px 7px 17px;
+  width: 100%;
+}
+.cmp-form-field input::-webkit-input-placeholder {
+  color: transparent;
+}
+.cmp-form-field input:-moz-placeholder {
+  color: transparent;
+}
+.cmp-form-field input::-moz-placeholder {
+  color: transparent;
+}
+.cmp-form-field input:-ms-input-placeholder {
+  color: transparent;
+}
+.cmp-form-field input::placeholder {
+  color: transparent;
+}
+.cmp-form-field--activated label {
+  color: #999;
+  font-size: 12px;
+  font-weight: 500;
+  left: 17px;
+  top: 7px;
+}
+.cmp-form-input--activated input::-webkit-input-placeholder,
+.cmp-form-input--activated input:-moz-placeholder,
+.cmp-form-input--activated input::-moz-placeholder,
+.cmp-form-input--activated input:-ms-input-placeholder,
+.cmp-form-input--activated input::placeholder {
+  color: #999999;
+}
+.cmp-form-field--focus label {
+  color: #1e1e1e;
+  font-size: 12px;
+  font-weight: 500;
+  left: 17px;
+  top: 7px;
+}
+.cmp-form-input--focus input::-webkit-input-placeholder,
+.cmp-form-input--focus input:-moz-placeholder,
+.cmp-form-input--focus input::-moz-placeholder,
+.cmp-form-input--focus input:-ms-input-placeholder,
+.cmp-form-input--focus input::placeholder {
+  color: #999999;
+}
+.cmp-form-field--focus.cmp-form-field:after {
+  display: block;
+  transform: scaleX(1);
+  border-color: #75caeb;
+}
+.cmp-form-field--focus label {
+  color: #75caeb;
+}
+.cmp-form .button-container button {
+  color: #fff;
+  text-shadow: 0 -1px rgb(0 0 0 / 40%);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 1px 1px rgb(255 255 255 / 30%),
+    0 1px 3px -1px rgb(45 60 72 / 50%);
+  background: #f73936;
+  -webkit-appearance: none;
+  -webkit-font-smoothing: inherit;
+  max-width: 100%;
+  transition: 0.15s all ease;
+  border-radius: 3px;
+  caret-color: transparent;
+}
+.cmp-form .button-container button:hover {
+  background-color: #75caeb;
+}
+
+/* Thank you modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.modal .modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  border-radius: 7px;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+.modal .close {
+  color: #555;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+.modal .close:hover,
+.modal .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal .modal-body {
+  padding: 15px 20px;
+}
+.modal .submission {
+  color: #777;
+}
+.modal .submission strong {
+  color: #000;
+}
+
+/* Animation for content */
+@keyframes fadein {
+  from { opacity: 0; }
+    to { opacity: 1; }
+}
+@-moz-keyframes fadein {
+  from { opacity: 0; }
+    to { opacity: 1; }
+}
+@-webkit-keyframes fadein {
+  from { opacity: 0; }
+    to { opacity: 1; }
+}
+@-ms-keyframes fadein {
+  from { opacity: 0; }
+    to { opacity: 1; }
+}
+@-o-keyframes fadein {
+  from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Animation for modal */
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+/* desktop bp */
+@media (min-width: 768px) {
+  .cmp-form {
+    box-shadow: 1px 15px 21px 0px rgba(0, 0, 0, 0.43);
+    -webkit-box-shadow: 1px 15px 21px 0px rgba(0, 0, 0, 0.43);
+    -moz-box-shadow: 1px 15px 21px 0px rgba(0, 0, 0, 0.43);
+    max-width: 760px;
+    margin: 1rem auto 0;
+  }
+  .cmp-form .c1 {
+    padding: 1.25rem 2rem 1.25rem 1.25rem;
+  }
+  .cmp-form img {
+    border-radius: 0 30px 0 0;
+  }
+  .col-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-radius: 0 30px;
+  }
+  .col {
+    flex: 1;
+  }
 }
