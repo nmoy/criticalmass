@@ -20,7 +20,11 @@ class Form {
 		const formField = element => validations => {
 			const input = element.querySelector('input')
 			input.addEventListener('focus', e => element.classList.add(dynamicClasses.focused))
-			input.addEventListener('blur', e => element.classList.remove(dynamicClasses.focused))
+			input.addEventListener('blur', e => {
+				element.classList.remove(dynamicClasses.focused)
+				if (input.value !== '') { element.classList.add(dynamicClasses.activated) } 
+				else { element.classList.remove(dynamicClasses.activated) }
+			})
 			input.addEventListener('keydown', e => {
 				element.classList.toggle(dynamicClasses.activated, input.value !== '')
 			})
